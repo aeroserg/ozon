@@ -51,20 +51,26 @@
         {% csrf_token %}
         <input type="hidden" id="inputSlugLending" value="{{slug_lending}}">
         <div class="form-group">
-          <input type="text" class="form-control" id="inputSurname" placeholder="Фамилия" value="" required>
+          <label for="inputFirstName">Имя</label>
+          <input type="text" class="form-control" name="inputFirstName" id="inputFirstName" placeholder="" value="" required>
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="inputFirstName" placeholder="Имя" value="" required>
+          <label for="inputSurname">Фамилия</label>
+          <input type="text" class="form-control" name="inputSurname" id="inputSurname" placeholder="" value="" required>
+        </div>
+        
+        <div class="form-group hidden">
+          <label for="inputMiddleName">Отчество</label>
+          <input type="text" class="form-control" name="inputMiddleName" id="inputMiddleName"  placeholder="" value="">
         </div>
         <div class="form-group">
-          <input type="text" class="form-control" id="inputMiddleName"  placeholder="Отчество" value="">
+          <label for="age">Возраст</label>
+          <input min="16" max="85" type="number" class="form-control" name="age" id="inputAge" placeholder="">
         </div>
         <div class="form-group">
-          <input min="16" max="85" type="number" class="form-control" id="inputAge" placeholder="Возраст">
-        </div>
-        <div class="form-group">
-          <select class="form-select" id="inputSex" aria-label="Default select example">
-            <option value="">Пол</option>
+          <label for="sex">Пол</label>
+          <select class="form-select" id="inputSex" name="sex" aria-label="Default select example">
+            <option value="">Выберите ваш пол</option>
             <option value="Мужской">Мужской</option>
             <option value="Женский">Женский</option>
           </select>
@@ -76,6 +82,14 @@
             <option value="Гражданин Казахстана, Киргизии, Армении, Беларуси">Гражданин Казахстана, Киргизии, Армении, Беларуси</option>
             <option value="Вид на жительство в РФ">Вид на жительство в РФ</option>
             <option value="Разрешение на временное проживание в РФ">Разрешение на временное проживание в РФ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputCitySelect"></label>
+          <select class="form-select" name="inputCitySelect" id="inputCitySelect">
+            <option value="">Где хотели бы работать?</option>
+            <option value="Пушкино">Хоругвино</option>
+            <option value="Хоругвино">Хоругвино</option>
           </select>
         </div>
         <div class="form-group">
@@ -105,21 +119,54 @@
           </select>
         </div>
         <div class="form-group">
-          <input minlength="16" maxlength="16" type="text" class="form-control" id="inputPhone" placeholder="+7(xxx)-xxx-xx-xx" required>
+          <label for="inputPhone">Телефон</label>
+          <input minlength="16" maxlength="16" type="text" class="form-control" id="inputPhone" name="inputPhone" placeholder="+7(xxx)-xxx-xx-xx" required>
         </div>
-        <div class="form-group">
-          <input type="email" class="form-control" id="inputEmail" placeholder="email">
+        <div class="form-group hidden">
+          <label for="inputEmail">Телефон</label>
+          <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="email">
         </div>
-        <div class="form-group">
-          <input type="text" class="form-control" id="inputCity" placeholder="Город">
+        <div class="form-group hidden">
+          <label for="inputCity">Телефон</label>
+          <input type="text" class="form-control" id="inputCity" name="inputCity" placeholder="Город">
         </div>
-        <button id="sendButton" type="submit" class="btn btn-primary">Отправить</button>
-
+        <div class=" checkbox">
+          <label for="inputAgreement"></label>
+          <input type="checkbox" class="form-checkbox" id="inputAgreement" name="inputAgreement" required>
+          Я соглашаюсь с <a href="#agreement" class="pop-up" id="pop-up">правилами обработки персональных данных</a>
+        </div>
+        <button id="sendButton" type="submit" class="btn btn-primary i_modal">Отправить</button>
+        
       </form>
     </div>
 
   
 </main>
+<div class="b-modal" id="b-modal">
+  <div class="b-modal-close" id="closeX"></div>
+  <div class="b-modal_body" id="b-modal-body">
+    <div class="modal_header">
+      Политика в области обработки и защиты персональных данных
+    </div>
+    <div class="span_header_first">
+Согласие
+    </div>
+    <div class="span_header_second">
+на обработку персональных данных
+    </div>
+    <div class="modal_text">
+<p>
+  с целью содействия в трудоустройстве даю своей волей и в своем интересе согласиеОАО «РЖД» (107174, г. Москва, ул. Новая Басманная, д. 2)
+  и ООО «СТАФФДЖЕТ» (236006, Калининградская обл., г. Калининград, ул. Ленинский просп., 30А, офис 7)на автоматизированную
+  и неавтоматизированную обработку в части сбора, записи, систематизации, накопления, хранения, уточнения (обновления, изменения), извлечения, использования, обезличивания, блокирования, удаления, уничтожения следующих моих персональных данных: ФИО (в т.ч. предыдущие фамилии, имена и (или) отчества в случае их изменения), дата рождения (число, месяц, год рождения), место рождения (как записано в паспорте), адрес регистрации (полный), адрес фактического проживания (полный), номер контактного телефона (мобильный, домашний при наличии), адрес электронной почты, СНИЛС, ИНН, паспортные данные (серия, номер, кем выдан, дата выдачи, когда выдан), семейное положение с указанием степени родства, ФИО жены/мужа, детей, год рождения, а также копии следующих документов, содержащих мои персональные данные: ИНН, СНИЛС, страницы паспорта (первая и с регистрацией по месту жительства).
+  Согласие на обработку персональных данных действует с даты его подписания до достижения цели обработки.
+  Согласие на обработку персональных данных может быть отозвано путем подачи письменного заявления.
+  В случаях, предусмотренных законодательством Российской Федерации, ОАО «РЖД» вправе продолжить обработку персональных данных без моего согласия.</p>
+    </div>
+  </div>
+</div>
+<script src="{{media_url}}js/main.js" defer></script>
+<script src="{{media_url}}js/send_data.js" defer></script>
 {{yandex_metrica}}
 </body>
 </html>
